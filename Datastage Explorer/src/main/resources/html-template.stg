@@ -1,0 +1,44 @@
+group html-template;
+
+jobListItem(jobName) ::= <<
+
+<li onclick="activeSubList('$jobName$')" id="$jobName$">$jobName$
+  <ul hidden="true">
+    <li onclick="activeStageList('$jobName$')">Stage List</li>
+    <li onclick="activeJobPropertiesTable('$jobName$')">Properties</li>
+  </ul>
+</li>
+>> 
+
+stageListItem(stageName) ::= <<
+
+<li onclick="activeSubList('$stageName$')" id="$stageName$">$stageName$
+  <ul hidden="true">
+    <li onclick="activeInputList('$stageName$')">Input Nodes</li>
+    <li onclick="activeOutputList('$stageName$')">Output Nodes</li>
+    <li onclick="activeStagePropertiesTable('$stageName$')">Properties</li>
+  </ul>
+</li>
+>> 
+
+collectionTable(colleactionName, collectionType,data) ::= <<
+<tr>
+  <table border="1">
+    <tr colspan="2">
+      <th>$colleactionName$ : $collectionType$</th>
+    </tr>
+    $data$
+  </table>
+</tr>
+>>
+
+subrecordTable(collectionName, data) ::= <<
+<tr>
+  <table border="1">
+    <tr colspan="2">
+      <th>Subrecord => $colleactionName$</th>
+    </tr>
+    $data$
+  </table>
+</tr>
+>>
